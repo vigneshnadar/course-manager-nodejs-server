@@ -63,14 +63,22 @@ function getSession(req, res) {
 }
 
 
-var userModel = require('./models/user/user.model.server')
-userModel.createUser({
-    username:'bob',
-    password:'bob'
-})
+// var userModel = require('./models/user/user.model.server')
+// // userModel.createUser({
+// //     username:'bob',
+// //     password:'bob'
+// // })
+//
+//
+//
+// userModel.findAllUsers()
+//     .then(function (users) {
+// console.log(users);
+//     });
+
 
 //
-// var userService = require('./services/user.service.server');
-// userService(app);
+var userService = require('./services/user.service.server');
+userService(app);
 
 app.listen(4000);

@@ -7,11 +7,17 @@ userModel = mongoose.model('UserModel',userSchema);
 
 
 function createUser(user){
-    userModel.create(user);
+    return userModel.create(user);
+}
+
+
+function findAllUsers() {
+    return userModel.find();
 }
 
 var api ={
-    createUser: createUser
+    createUser: createUser,
+    findAllUsers: findAllUsers
 }
 
 
