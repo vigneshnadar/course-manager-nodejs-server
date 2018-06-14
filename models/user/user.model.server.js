@@ -15,9 +15,15 @@ function findAllUsers() {
     return userModel.find();
 }
 
+
+function findUserById(userId) {
+    return userModel.findById(userId);
+}
+
 var api ={
     createUser: createUser,
-    findAllUsers: findAllUsers
+    findAllUsers: findAllUsers,
+    findUserById: findUserById
 }
 
 
