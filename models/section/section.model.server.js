@@ -10,8 +10,14 @@ function createSection(section) {
 }
 
 
+function findSectionsForCourse(courseId) {
+    return sectionModel.find({courseId: courseId});
+}
+
+
 var api ={
-    createSection: createSection
+    createSection: createSection,
+    findSectionsForCourse: findSectionsForCourse
 }
 
 
