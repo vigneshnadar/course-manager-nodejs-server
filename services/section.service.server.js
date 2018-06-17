@@ -22,12 +22,20 @@ module.exports = function(app){
 
         // res.json(enrollment);
 
-        enrollmentModel
-            .enrollStudentInSection(enrollment)
-            .then(function (enrollment) {
-                res.json(enrollment);
+        sectionModel.decrementSectionSeats(sectionId)
+            .then(function () {
+               return  enrollmentModel
+                    .enrollStudentInSection(enrollment)
+
             })
+            .then(function (enrollment) {
+            res.json(enrollment);
+        })
+
+
     }
+
+
 
 
 
