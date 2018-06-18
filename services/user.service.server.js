@@ -5,6 +5,7 @@ module.exports = function(app){
     app.get('/api/user/:userId',findUserById)
     app.post('/api/user',createUser)
     app.get('/api/profile',profile)
+    app.put('/api/profile',updateProfile)
     app.post('/api/logout',logout)
     app.post('/api/login',login)
 
@@ -24,6 +25,17 @@ module.exports = function(app){
         userModel.findUserByCredentials(credentials)
             .then(function (user) {
                 req.session['currentUser']=user;
+                res.json(user);
+            })
+    }
+
+    function updateProfile(req, res) {
+        var user = req.body;
+        var currentUser =   req.session.currentUser;
+        var userId = currentUser._id;
+        userModel.updateProfile(user,userId)
+            .then(function (user) {
+                // req.session['currentUser']=user;
                 res.json(user);
             })
     }
