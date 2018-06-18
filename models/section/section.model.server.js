@@ -10,6 +10,16 @@ function createSection(section) {
 }
 
 
+function editSection(sectionId,section) {
+    console.log(section);
+    return sectionModel.update({
+        _id : sectionId
+    },{
+        $set: section
+    })
+}
+
+
 function findSectionsForCourse(courseId) {
     return sectionModel.find({courseId: courseId});
 }
@@ -47,7 +57,8 @@ var api ={
     findSectionsForCourse: findSectionsForCourse,
     decrementSectionSeats: decrementSectionSeats,
     incrementSectionSeats: incrementSectionSeats,
-    removeSection: removeSection
+    removeSection: removeSection,
+    editSection: editSection
 }
 
 

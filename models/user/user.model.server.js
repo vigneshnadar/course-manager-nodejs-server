@@ -34,7 +34,7 @@ function findUserByCredentials(credentials) {
 
 function findUserById(userId) {
     console.log('find by ids');
-    console.log(userModel.findOne({ _id :userId }));
+    // console.log(userModel.findOne({ _id :userId }));
     return userModel.findOne({ _id :userId })
     // return userModel.findById(userId);
 }
