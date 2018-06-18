@@ -32,6 +32,13 @@ function incrementSectionSeats(sectionId) {
 
 }
 
+function removeSection(sectionId) {
+    return sectionModel.remove({
+        _id : sectionId
+    })
+
+}
+
 
 
 
@@ -39,7 +46,8 @@ var api ={
     createSection: createSection,
     findSectionsForCourse: findSectionsForCourse,
     decrementSectionSeats: decrementSectionSeats,
-    incrementSectionSeats: incrementSectionSeats
+    incrementSectionSeats: incrementSectionSeats,
+    removeSection: removeSection
 }
 
 

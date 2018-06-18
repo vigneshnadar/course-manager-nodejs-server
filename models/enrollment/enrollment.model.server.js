@@ -23,6 +23,13 @@ function findSectionsForStudent(studentId) {
 }
 
 
+
+function removeEnrollment(enrollment) {
+    console.log(enrollment);
+    return enrollmentModel.remove(enrollment);
+}
+
+
 // function findSectionsForCourse(courseId) {
 //     return sectionModel.find({courseId: courseId});
 // }
@@ -31,7 +38,8 @@ function findSectionsForStudent(studentId) {
 var api ={
     enrollStudentInSection: enrollStudentInSection,
     findSectionsForStudent: findSectionsForStudent,
-    unenrollStudentInSection: unenrollStudentInSection
+    unenrollStudentInSection: unenrollStudentInSection,
+    removeEnrollment: removeEnrollment
 }
 
 

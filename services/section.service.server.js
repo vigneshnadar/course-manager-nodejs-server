@@ -7,6 +7,7 @@ module.exports = function(app){
     app.post('/api/section/:sectionId/enrollment',enrollStudentInSection)
     app.get('/api/student/section', findSectionsForStudent)
     app.post('/api/section/:sectionId/unenrollment',unenrollStudentInSection)
+    app.delete('/api/section/:sectionId',deleteSection)
 
 
     var sectionModel = require('../models/section/section.model.server')
@@ -95,6 +96,31 @@ module.exports = function(app){
                 // req.session['currentUser']= user;
                 res.json(section);
             })
+    }
+
+
+    function deleteSection(req, res) {
+        var sectionId = req.params['sectionId'];
+        var currentUser =   req.session.currentUser;
+        var userId = currentUser._id;
+        var enrollment = {
+            student : userId,
+            section : sectionId
+        };
+
+        // res.json(enrollment);
+
+        sectionModel.removeSection(sectionId)
+            .then(function () {
+                return  enrollmentModel
+                    .removeEnrollment(enrollment)
+
+            })
+            .then(function (enrollment) {
+                res.json(enrollment);
+            })
+
+
     }
 
 
