@@ -44,7 +44,7 @@ module.exports = function(app){
         var id = req.params['userId'];
         userModel.findUserById(id)
             .then(function (user) {
-                res.json();
+                res.json(user);
             })
     }
     

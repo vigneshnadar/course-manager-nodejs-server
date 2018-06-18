@@ -33,7 +33,10 @@ function findUserByCredentials(credentials) {
 
 
 function findUserById(userId) {
-    return userModel.findById(userId);
+    console.log('find by ids');
+    console.log(userModel.findOne({ _id :userId }));
+    return userModel.findOne({ _id :userId })
+    // return userModel.findById(userId);
 }
 
 var api ={
