@@ -9,6 +9,10 @@ function enrollStudentInSection(enrollment) {
     return enrollmentModel.create(enrollment);
 }
 
+function findSectionsForStudent(studentId) {
+    return enrollmentModel.find({student: studentId});
+}
+
 
 // function findSectionsForCourse(courseId) {
 //     return sectionModel.find({courseId: courseId});
@@ -16,7 +20,8 @@ function enrollStudentInSection(enrollment) {
 //
 //
 var api ={
-    enrollStudentInSection: enrollStudentInSection
+    enrollStudentInSection: enrollStudentInSection,
+    findSectionsForStudent: findSectionsForStudent
 }
 
 

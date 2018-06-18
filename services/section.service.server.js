@@ -5,6 +5,7 @@ module.exports = function(app){
     app.post('/api/course/:courseId/section',createSection)
     app.get('/api/course/:courseId/section',findSectionsForCourse)
     app.post('/api/section/:sectionId/enrollment',enrollStudentInSection)
+    app.get('/api/student/section', findSectionsForStudent)
 
 
     var sectionModel = require('../models/section/section.model.server')
@@ -32,6 +33,17 @@ module.exports = function(app){
             res.json(enrollment);
         })
 
+
+    }
+
+
+    function findSectionsForStudent(req, res) {
+        var currentUser = req.session['currentUser'];
+        var studentId = currentUser._id;
+        enrollmentModel.findSectionsForStudent(studentId)
+            .then(function (enrollments) {
+                res.json(enrollments);
+            })
 
     }
 
