@@ -4,13 +4,22 @@ var enrollmentSchema = require('./enrollment.schema.server');
 
 var enrollmentModel = mongoose.model('EnrollmentModel',enrollmentSchema);
 
+function unenrollStudentInSection(enrollment) {
+    console.log(enrollment);
+    return enrollmentModel.remove(enrollment);
+}
+
+
 function enrollStudentInSection(enrollment) {
     console.log(enrollment);
     return enrollmentModel.create(enrollment);
 }
 
 function findSectionsForStudent(studentId) {
-    return enrollmentModel.find({student: studentId});
+    return enrollmentModel
+        .find({student: studentId})
+        .populate('section')
+        .exec();
 }
 
 
@@ -21,7 +30,8 @@ function findSectionsForStudent(studentId) {
 //
 var api ={
     enrollStudentInSection: enrollStudentInSection,
-    findSectionsForStudent: findSectionsForStudent
+    findSectionsForStudent: findSectionsForStudent,
+    unenrollStudentInSection: unenrollStudentInSection
 }
 
 
