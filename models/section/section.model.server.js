@@ -19,6 +19,13 @@ function editSection(sectionId,section) {
     })
 }
 
+function findSectionById(sectionId) {
+    console.log('find by ids');
+    // console.log(userModel.findOne({ _id :userId }));
+    return sectionModel.findOne({ _id :sectionId })
+    // return userModel.findById(userId);
+}
+
 
 function findSectionsForCourse(courseId) {
     return sectionModel.find({courseId: courseId});
@@ -58,7 +65,8 @@ var api ={
     decrementSectionSeats: decrementSectionSeats,
     incrementSectionSeats: incrementSectionSeats,
     removeSection: removeSection,
-    editSection: editSection
+    editSection: editSection,
+    findSectionById: findSectionById
 }
 
 

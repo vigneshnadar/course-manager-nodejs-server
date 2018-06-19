@@ -8,6 +8,7 @@ module.exports = function(app){
     app.get('/api/student/section', findSectionsForStudent)
     app.post('/api/section/:sectionId/unenrollment',unenrollStudentInSection)
     app.delete('/api/section/:sectionId',deleteSection)
+    app.get('/api/section/:sectionId',getSection)
     app.put('/api/section/:sectionId',editSection)
 
 
@@ -95,6 +96,15 @@ module.exports = function(app){
             .then(function (section) {
                 console.log("section is"+section);
                 // req.session['currentUser']= user;
+                res.json(section);
+            })
+    }
+
+
+    function getSection(req, res) {
+        var id = req.params['sectionId'];
+        sectionModel.findSectionById(id)
+            .then(function (section) {
                 res.json(section);
             })
     }
