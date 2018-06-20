@@ -51,6 +51,12 @@ module.exports = function(app){
     function profile(req, res) {
         console.log('profile');
         console.log(req.session['currentUser']);
+        if(typeof req.session['currentUser'] === 'undefined'){
+            req.session['currentUser'] = {
+                username : 'unregistered',
+                password : 'unregistered'
+            }
+        }
         res.send(req.session['currentUser']);
     }
     
