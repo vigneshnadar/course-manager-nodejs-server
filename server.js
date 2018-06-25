@@ -83,5 +83,6 @@ userService(app);
 
 
 require('./services/section.service.server')(app);
+require('./services/quiz.service.server')(app);
 
 app.listen(4000);
